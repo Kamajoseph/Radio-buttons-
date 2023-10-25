@@ -1,0 +1,112 @@
+!-- activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButtonCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dog" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bird" />
+
+        <RadioButton
+            android:id="@+id/radioButtonRabbit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rabbit" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pig" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/displayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display" />
+
+    <ImageView
+        android:id="@+id imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/default_image" />
+
+</LinearLayout>
+
+// MainActivity.java
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView imageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+
+        RadioGroup radioGroup = findViewById(R.id.radiogroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButtonCat:
+                        imageView.setImageResource(R.drawable.cat_image);
+                        break;
+                    case R.id.radioButtonDog:
+                        imageView.setImageResource(R.drawable.dog_image);
+                        break;
+                    case R.id.radioButtonBird:
+                        imageView.setImageResource(R.drawable.bird_image);
+                        break;
+                    case R.id.radioButtonRabbit:
+                        imageView.setImageResource(R.drawable.rabbit_image);
+                        break;
+                    case R.id.radioButtonPig:
+                        imageView.setImageResource(R.drawable.pig_image);
+                        break;
+                }
+            }
+        });
+
+        Button displayButton = findViewById(R.id.displayButton);
+        displayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the display button click event if needed
+            }
+        });
+    }
+}
+
+
+
+
+
